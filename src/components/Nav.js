@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
-import Logo from "./images/logo.png";
+import Logo from "../images/logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,21 +12,21 @@ function Navbar() {
             <div className="flex items-center ml-8">
               <div className="flex-shrink-0">
                 <a href="/">
-                  <img className="h-12 w-12" src={Logo} id="home" alt="PolyAliens logo" />
+                  <img className="h-12 w-12" src={Logo} id="home" alt="Ayalaan logo" />
                 </a>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
                   <a
-                    href="https://discord.gg/3x3h2z6A63"
+                    href="https://www.linkedin.com/in/p-madhan/"
                     className="text-xl text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Discord
+                    Linkedin
                   </a>
                   <a
-                    href="https://twitter.com/StackUpHQ"
+                    href="https://twitter.com/madhanking12"
                     className="text-xl text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -93,15 +93,15 @@ function Navbar() {
             <div className="md:hidden ml-8" id="mobile-menu">
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a
-                  href="https://discord.gg/TZSeU2EUgS"
+                  href="https://www.linkedin.com/in/p-madhan/"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Discord
+                  Linkedin
                 </a>
                 <a
-                  href="https://twitter.com/PolyAliens"
+                  href="https://twitter.com/Madhanking12"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -109,13 +109,14 @@ function Navbar() {
                   Twitter
                 </a>
                 <a
-                  href="https://opensea.io/collection/polyaliens"
+                  href="https://opensea.io/collection/Ayalaan"
                   className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   Opensea
                 </a>
+               
               </div>
             </div>
           )}

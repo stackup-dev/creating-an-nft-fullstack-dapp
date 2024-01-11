@@ -5,7 +5,8 @@ import { fetchData } from "./redux/data/dataActions";
 import * as s from "./styles/globalStyles";
 import styled from "styled-components";
 import header from "./images/header.png";
-import Nav from "./Nav.js";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer"
 
 const truncate = (input, len) => (input.length > len ? `${input.substring(0, len)}...` : input);
 
@@ -127,6 +128,38 @@ function App() {
   });
 
   // Minting an NFT
+  const claimNFTs = () => {
+    let cost = CONFIG.WEI_COST;
+    let gasLimit = CONFIG.GAS_LIMIT;
+    let totalCostWei = String(cost * mintAmount);
+    let totalGasLimit = String(gasLimit * mintAmount);
+    console.log("Cost: ", totalCostWei);
+    console.log("Gas limit: ", totalGasLimit);
+    setFeedback(`Minting your ${CONFIG.NFT_NAME}...`);
+    setClaimingNft(true);
+    blockchain.smartContract.methods
+     .mint(mintAmount)
+     .send({
+      gasLimit: String(totalGasLimit),
+      to: CONFIG.CONTRACT_ADDRESS,
+      from: blockchain.account,
+      value: totalCostWei,
+     })
+     .once("error", (err) => {
+      console.log(err);
+      setFeedback("Sorry, something went wrong please try again later.");
+      setClaimingNft(false);
+     })
+     .then((receipt) => {
+      console.log(receipt);
+      setFeedback(
+       `Cool! Now the ${CONFIG.NFT_NAME} is yours! go visit Opensea.io to view it.`
+      );
+      setClaimingNft(false);
+      dispatch(fetchData(blockchain.account));
+     });
+   };
+  
 
   const decrementMintAmount = () => {
     let newMintAmount = mintAmount - 1;
@@ -174,7 +207,7 @@ function App() {
       <Nav />
       <div className="header" style={{ backgroundImage: `url(${header})` }}>
         <s.Container flex={1} ai={"center"}>
-          <StyledLogo className="logo-txt">PolyAliens</StyledLogo>
+          <StyledLogo className="logo-txt">Ayalaan</StyledLogo>
           <p className="header-mint-txt text-2xl text-center text-white">MINTING LIVE NOW!</p>
           <s.SpacerSmall />
           <ResponsiveWrapper flex={1} style={{ padding: 24 }} test>
@@ -325,7 +358,9 @@ function App() {
           </ResponsiveWrapper>
           <s.SpacerMedium />
         </s.Container>
+      
       </div>
+      <Footer />
     </s.Screen>
   );
 }

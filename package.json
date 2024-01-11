@@ -1,7 +1,7 @@
 {
-  "name": "PolyAliens",
+  "name": "Ayalaan",
   "version": "1.0.0",
-  "description": "StackUp's PolyAliens NFT minting dapp.",
+  "description": "StackUp's Ayalaan NFT minting dapp.",
   "private": true,
   "dependencies": {
     "@headlessui/react": "^1.4.2",
